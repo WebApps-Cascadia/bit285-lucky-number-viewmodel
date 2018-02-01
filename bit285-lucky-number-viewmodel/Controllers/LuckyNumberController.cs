@@ -24,19 +24,19 @@ namespace bit285_lucky_number_database.Controllers
             if (ModelState.IsValid) //always test the model state before writing to database
             {
                 //TODO: update database with Player info
-               
+                dbc.Players.Add(p);
 
                 //TODO: Save playerid to session variable
-               
+                dbc.SaveChanges();
 
                 //TODO: Redirect to the Spin Action
-                
+                RedirectToAction("Spin");
 
             }
             return View();
         }
 
-        public ActionResult Spin()
+        public ActionResult Spin(Player mySpin)
         {
             //Get the current player from the Database
             int id = Convert.ToInt32(Session["PlayerId"]);
