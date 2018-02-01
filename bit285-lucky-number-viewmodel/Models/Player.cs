@@ -9,6 +9,17 @@ namespace bit285_lucky_number_viewmodel.Models
     public class Player
     {
         //TODO: Add the properties neededby the Player entity (including Data Annotations)
-       
+        [Key]
+        public int PlayerId { get; set; }
+        [Required]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+        [Required]
+        [Display(Name = "Lucky Number")]
+        [Range(1, 9, ErrorMessage = "The Lucky Number must be a number from 1 to 9")]
+        public int Number { get; set; }
+        [Required]
+        [Display(Name = "Balance")]
+        public decimal Balance { get; set; }
     }
 }
