@@ -7,6 +7,10 @@ namespace bit285_lucky_number_viewmodel.ViewModels
 {
     public class SpinViewModel
     {
+        public SpinViewModel()
+        {
+
+        }
         public SpinViewModel(int n, int b)
         {
             Number = n;

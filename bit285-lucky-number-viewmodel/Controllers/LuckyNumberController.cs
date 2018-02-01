@@ -10,7 +10,7 @@ namespace bit285_lucky_number_database.Controllers
 {
     public class LuckyNumberController : Controller
     {
-        LuckyNumberDbContext dbc = new LuckyNumberDbContext();
+        public LuckyNumberDbContext dbc = new LuckyNumberDbContext();
 
         // GET: LuckyNumber
         public ActionResult Index()
