@@ -32,7 +32,7 @@ namespace bit285_lucky_number_database.Controllers
 
 
                 //TODO: Redirect to the Spin Action
-                RedirectToAction("Spin");
+                return RedirectToAction("Spin");
 
             }
             return View();
@@ -46,9 +46,10 @@ namespace bit285_lucky_number_database.Controllers
 
             //TODO: Create a new Spin ViewModel instance to send to the View 
             // (Fill in its data with info from the Player)
-            dbc.Players.Single(p => p.PlayerId).First();
+            dbc.Players.Single(p => p.PlayerId == id);
             SpinViewModel mySpin = new SpinViewModel();
-            
+            mySpin.Number = currentPlayer.Number;
+            mySpin.Balance = currentPlayer.Balance;
 
             return View(mySpin);
         }
