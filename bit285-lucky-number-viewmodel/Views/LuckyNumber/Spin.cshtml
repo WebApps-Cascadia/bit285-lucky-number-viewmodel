@@ -1,12 +1,11 @@
 ﻿@model bit285_lucky_number_viewmodel.ViewModels.SpinViewModel
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Lucky Number @Model.Number</title>
     <style type="text/css">
+
         body {
             background-color: lightgoldenrodyellow;
         }
@@ -40,7 +39,7 @@
     @using (this.Html.BeginForm())
     {
         <div class="spinner">
-            @if (@Model.Balance>0)
+            @if (@Model.Balance > 0)
             {
                 <input type="submit" value="SPIN" />
             }
