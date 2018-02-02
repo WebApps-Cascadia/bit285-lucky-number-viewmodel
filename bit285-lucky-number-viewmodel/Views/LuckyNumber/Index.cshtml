@@ -1,29 +1,30 @@
 ﻿@model bit285_lucky_number_viewmodel.Models.Player
-
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create Player</title>
     <style type="text/css">
+
         body {
             background-color: lightgoldenrodyellow;
             font: bold 18px 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-         }
-        .text-danger{color:darkred;font-style:italic;}
-    </style>
+        }
 
+        .text-danger {
+            color: darkred;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    @using (Html.BeginForm()) 
+    @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        
+
         <div class="form-horizontal">
             <h2>Lucky Number Create Player</h2>
             <hr />
@@ -35,7 +36,7 @@
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Number, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -43,7 +44,7 @@
                     @Html.ValidationMessageFor(model => model.Number, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -51,7 +52,7 @@
                     @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
                 </div>
             </div>
-    
+
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" value="Create" class="btn btn-default" />
@@ -59,7 +60,6 @@
             </div>
         </div>
     }
-    
 
 </body>
 </html>
