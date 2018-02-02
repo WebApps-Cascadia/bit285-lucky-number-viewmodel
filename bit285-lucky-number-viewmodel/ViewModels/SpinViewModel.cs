@@ -9,13 +9,16 @@ namespace bit285_lucky_number_viewmodel.ViewModels
     {
         //TODO: Add the properties needed by the Spin View
         private int[] _Spinner = new int [3];
+
         private Random rnd = new Random(); 
+
         public int [] Spinner { get
             {
-                for(int i = 0; i< Spinner.Length; i++)
+                for(int i = 0; i < _Spinner.Length; i++)
                 {
                     _Spinner[i] = rnd.Next(0, 10);
                 }
+
                 return _Spinner;
             }
         }
@@ -23,7 +26,7 @@ namespace bit285_lucky_number_viewmodel.ViewModels
         public int Number { get; set; }
         public string Message { get
             {
-                return Balance < 0 ? "Game Over" : " "; 
+                return Balance < 0 ?  "Game Over" : " "; 
             }
         }
         public bool isWinner { get; set; }

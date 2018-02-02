@@ -43,6 +43,7 @@ namespace bit285_lucky_number_database.Controllers
             //Get the current player from the Database
 
             int id = Convert.ToInt32(Session["PlayerId"]);
+
             Player currentPlayer = dbc.Players.Single(p => p.PlayerId == id);
 
             //TODO: Create a new Spin ViewModel instance to send to the View 
