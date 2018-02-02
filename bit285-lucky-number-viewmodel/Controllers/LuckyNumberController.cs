@@ -24,13 +24,18 @@ namespace bit285_lucky_number_database.Controllers
             if (ModelState.IsValid) //always test the model state before writing to database
             {
                 //TODO: update database with Player info
-               
+
+                dbc.Players.Add(p);
+                dbc.SaveChanges();
+                Session["currentID"] = p.PlayerId;
+
 
                 //TODO: Save playerid to session variable
-               
+
+                Session["currentID"] = p.PlayerId;
 
                 //TODO: Redirect to the Spin Action
-                
+                return RedirectToAction("Spin");
 
             }
             return View();
@@ -44,7 +49,8 @@ namespace bit285_lucky_number_database.Controllers
 
             //TODO: Create a new Spin ViewModel instance to send to the View 
             // (Fill in its data with info from the Player)
-            
+
+            Player mySpin = new Player();
 
             return View(mySpin);
         }
@@ -72,8 +78,8 @@ namespace bit285_lucky_number_database.Controllers
             }
 
             //TODO: Update the Spin ViewModel with the cuurent player's new balance
-
-
+            mySpin.Balance = currentPlayer.Balance;
+            
             //TODO: Update Database
 
             return View(mySpin);
