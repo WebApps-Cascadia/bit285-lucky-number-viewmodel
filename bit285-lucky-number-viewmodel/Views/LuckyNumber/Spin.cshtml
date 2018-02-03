@@ -1,10 +1,13 @@
 ﻿@model bit285_lucky_number_viewmodel.ViewModels.SpinViewModel
-
+@{
+    ViewBag.Title = "Spin";
+}
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    @*will display the number the user chose as a number tobe lucky*@
     <title>Lucky Number @Model.Number</title>
     <style type="text/css">
         body {
