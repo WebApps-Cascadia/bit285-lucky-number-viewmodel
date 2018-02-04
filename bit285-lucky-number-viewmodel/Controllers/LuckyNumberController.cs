@@ -32,12 +32,13 @@ namespace bit285_lucky_number_database.Controllers
                 Session["PlayerId"] = p.PlayerId;
 
                 //TODO: Redirect to the Spin Action
-                RedirectToAction("Spin");
+                return RedirectToAction("Spin");
 
             }
             return View();
         }
 
+        [HttpGet]
         public ActionResult Spin()
         {
             //Get the current player from the Database
@@ -48,8 +49,8 @@ namespace bit285_lucky_number_database.Controllers
             // (Fill in its data with info from the Player)
             SpinViewModel mySpin = new SpinViewModel()
             {
-                number = currentPlayer.Number,
-                balance = currentPlayer.Balance
+                Number = currentPlayer.Number,
+                Balance = currentPlayer.Balance
             };
             
 
@@ -64,13 +65,13 @@ namespace bit285_lucky_number_database.Controllers
             Player currentPlayer = dbc.Players.Single(p => p.PlayerId == id);
 
             //TODO: Update the Spin ViewModel with current player's lucky number
-            mySpin.number = currentPlayer.Number;
+            mySpin.Number = currentPlayer.Number;
 
             //Game Play - Spin
             if (currentPlayer.Balance > 0)
             {
                 currentPlayer.Balance -= 1; //charge for a spin
-                mySpin.spin();
+                mySpin.Spin();
             }
             //Game Play - Check Winning
             if (mySpin.isWinner)
@@ -79,7 +80,7 @@ namespace bit285_lucky_number_database.Controllers
             }
 
             //TODO: Update the Spin ViewModel with the current player's new balance
-            mySpin.balance = currentPlayer.Balance;
+            mySpin.Balance = currentPlayer.Balance;
 
             //TODO: Update Database
             dbc.SaveChanges();
