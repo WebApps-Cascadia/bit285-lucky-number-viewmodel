@@ -11,10 +11,12 @@ namespace bit285_lucky_number_database.Controllers
     public class LuckyNumberController : Controller
     {
         LuckyNumberDbContext dbc = new LuckyNumberDbContext();
-
+    
+        [HttpGet]
         // GET: LuckyNumber
         public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -24,13 +26,19 @@ namespace bit285_lucky_number_database.Controllers
             if (ModelState.IsValid) //always test the model state before writing to database
             {
                 //TODO: update database with Player info
-               
+                
+                 dbc.Players.Add(p);
+                dbc.SaveChanges();
+
+
+
 
                 //TODO: Save playerid to session variable
-               
+                Session["PlayerId"] = dbc.Players.Last();
+              
 
                 //TODO: Redirect to the Spin Action
-                
+                RedirectToAction("Spin");
 
             }
             return View();
@@ -44,6 +52,12 @@ namespace bit285_lucky_number_database.Controllers
 
             //TODO: Create a new Spin ViewModel instance to send to the View 
             // (Fill in its data with info from the Player)
+            var mySpin = new SpinViewModel();
+            mySpin.Balance = currentPlayer.Balance;
+            mySpin.LuckyNumber = currentPlayer.Number;
+           
+          
+              
             
 
             return View(mySpin);
@@ -57,7 +71,7 @@ namespace bit285_lucky_number_database.Controllers
             Player currentPlayer = dbc.Players.Single(p => p.PlayerId == id);
 
             //TODO: Update the Spin ViewModel with current player's lucky number
-            
+            mySpin.Number = currentPlayer.Number;
 
             //Game Play - Spin
             if (currentPlayer.Balance > 0)
@@ -72,10 +86,12 @@ namespace bit285_lucky_number_database.Controllers
             }
 
             //TODO: Update the Spin ViewModel with the cuurent player's new balance
-
+            mySpin.Balance = currentPlayer.Balance;
 
             //TODO: Update Database
-
+            currentPlayer.Balance = mySpin.Balance;
+            dbc.SaveChanges();
+            
             return View(mySpin);
         }
     }
