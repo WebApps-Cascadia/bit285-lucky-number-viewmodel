@@ -54,7 +54,7 @@ namespace bit285_lucky_number_database.Controllers
             // (Fill in its data with info from the Player)
             var mySpin = new SpinViewModel();
             mySpin.Balance = currentPlayer.Balance;
-            mySpin.LuckyNumber = currentPlayer.Number;
+            mySpin.Number = currentPlayer.Number;
            
           
               
