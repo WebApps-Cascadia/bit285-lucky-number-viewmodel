@@ -9,9 +9,9 @@ namespace bit285_lucky_number_viewmodel.ViewModels
     public class SpinViewModel
     {
         //TODO: Add the properties needed by the Spin View
-        public Boolean isWinner;
-        public int[] Spinner;
-        public string Message { get; set; }
+        public Boolean isWinner { get; set; }
+        public int[] Spinner { get; set; } = new int[3];
+        public string Message { get; set; } = "Welcome";
         [Range(1, 9)]
         public int Number { get; set; }
         [RegularExpression(@"^\$?\d+(\.(\d{2}))?$")]
