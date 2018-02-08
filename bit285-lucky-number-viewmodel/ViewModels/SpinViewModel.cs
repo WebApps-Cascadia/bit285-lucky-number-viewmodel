@@ -8,7 +8,7 @@ namespace bit285_lucky_number_viewmodel.ViewModels
     public class SpinViewModel
     {
         //TODO: Add the properties needed by the Spin View
-        bool isWinner;
+        public bool isWinner { get; set; }
         int[] Spinner = new int[3];
         decimal _balance;
 
@@ -54,6 +54,7 @@ namespace bit285_lucky_number_viewmodel.ViewModels
             }
         }
         public int Number { get; set; }
+        
     }
 
 }
