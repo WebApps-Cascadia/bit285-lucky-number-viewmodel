@@ -9,11 +9,11 @@ namespace bit285_lucky_number_viewmodel.ViewModels
     {
         //TODO: Add the properties needed by the Spin View
         public bool isWinner { get; set; }
-        int[] Spinner = new int[3];
+        public int[] Spinner = new int[3];
         decimal _balance;
 
         // This method updates values for Spinner and isWinner based on wheter a Lucky Number was rolled
-        public void spin()
+        public void Spin()
         {
            Random _random = new Random();
            isWinner = false;
